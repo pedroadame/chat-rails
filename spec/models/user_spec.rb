@@ -1,5 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'with name' do
+    subject { build :user }
+    it { is_expected.to be_valid }
+  end
+
+  context 'with nil name' do
+    subject { build :user, name: nil }
+    it { is_expected.to_not be_valid }
+  end
+
+  context 'with empty name' do
+    subject { build :user, name: "" }
+    it { is_expected.to_not be_valid }
+  end
 end
