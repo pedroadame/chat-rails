@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'pages/index'
-
-  get 'pages/indexx'
-
+  resources :users, only: [:new, :create]
+  root to: 'users#new'
 end
