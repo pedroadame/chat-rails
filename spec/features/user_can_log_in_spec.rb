@@ -11,4 +11,11 @@ RSpec.describe 'UserCanLogIn', type: :feature do
     expect(page).to have_text "Bienvenido, Pedro"
     expect(page).to have_text "Elige una sala"
   end
+
+  scenario 'User can\'t log in without introducing username' do
+    visit root_url
+    click_button "Entrar"
+    expect(page).to have_css(".new-user-form")
+    expect(page).to have_css(".validation-error")
+  end
 end

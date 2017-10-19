@@ -1,7 +1,8 @@
 h1 Chat!
-= form_with model: @user, local: true do |f|
-  .inputs
-    = f.label :name, "Introduce tu nombre"
-    = f.text_field :name
-  .submit
-    = f.submit "Entrar"
+div.new-user-form
+  = form_with model: @user, local: true do |f|
+    .inputs
+      = f.label :name, "Introduce tu nombre"
+      = f.text_field :name
+    .submit
+      = f.submit "Entrar"

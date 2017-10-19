@@ -8,4 +8,7 @@ html
     = action_cable_meta_tag
   
   body
+    - unless flash.empty?
+      - flash.each do |k, v|
+        div Error: #{v}
     = yield

@@ -9,7 +9,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to rooms_path
     else
-      flash[:error] = "Introduce un nombre de usuario"
       render :new 
     end
   end
