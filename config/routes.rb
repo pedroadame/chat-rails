@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'pages/index'
-
-  get 'pages/indexx'
-
+  resources :users, only: [:new, :create]
+  resources :rooms, only: [:index, :new, :create, :show]
+  root to: 'users#new'
 end
