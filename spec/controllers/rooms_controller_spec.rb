@@ -1,6 +1,8 @@
 require 'rails_helper'
+require 'support/login_helper'
 
 RSpec.describe RoomsController, type: :controller do
+  include LoginHelper
 
   describe "GET #index" do
     context 'when logged in' do
@@ -20,11 +22,5 @@ RSpec.describe RoomsController, type: :controller do
         expect(response).to redirect_to(root_path)
       end
     end
-  end
-
-  private
-  def login!
-    @user = create :user
-    session[:user_id] = @user.id
   end
 end
