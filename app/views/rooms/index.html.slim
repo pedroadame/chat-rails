@@ -1,0 +1,8 @@
+h1 Bienvenido, #{@current_user.name}
+
+
+h2 Elige una sala
+
+h3 = link_to "Nueva sala", new_room_path
+div.rooms
+  = render @rooms

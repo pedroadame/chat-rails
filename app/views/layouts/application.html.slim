@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title = yield :title
+    meta name="description" content="#{yield :meta_description}"
+    meta charset="utf-8"
+
+    = action_cable_meta_tag
+  
+  body
+    - unless flash.empty?
+      - flash.each do |k, v|
+        div Error: #{v}
+    = yield

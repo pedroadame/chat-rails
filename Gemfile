@@ -8,7 +8,7 @@ end
 # Looking to use the Edge version? gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 
-gem 'shog'
+gem 'slim-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.10'
 
@@ -80,6 +80,10 @@ group :development do
   # Use Spring. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'rack_session_access'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
