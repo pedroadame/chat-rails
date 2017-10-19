@@ -13,7 +13,7 @@ RSpec.describe UsersController, type: :controller do
     context 'with correct params' do
       subject { post :create, params: { user: { name: "a_name" } } }
       it "returns http success with good params" do
-        expect(subject).to have_http_status(:success)
+        expect(subject).to have_http_status(:found)
       end
 
       it "redirects to rooms_path" do
@@ -28,8 +28,8 @@ RSpec.describe UsersController, type: :controller do
     context 'without correct params' do
       subject { post :create, params: { user: { name: "" } } }
 
-      it "renders :new" do
-        expect(subject).to render_template("new")
+      it "returns http success" do
+        expect(subject).to have_http_status(:success)
       end
 
       it "doesn't register the user" do
