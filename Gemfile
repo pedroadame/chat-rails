@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'pg', '~> 0.21'
 
 # Use Redis Rails to set up a Redis backed Cache and / or Session
+gem 'redis', '~> 3.3'
 gem 'redis-rails', '~> 5.0'
 
 # Use Sidekiq as a background job processor through Active Job
@@ -39,6 +40,7 @@ gem 'sassc'
 
 # Use Uglifier as the compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails'
 
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.3'
@@ -84,6 +86,7 @@ end
 
 group :test do
   gem 'rack_session_access'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

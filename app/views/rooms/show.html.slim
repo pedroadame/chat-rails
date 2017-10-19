@@ -1,12 +1,9 @@
 div#back
   = link_to "Salir de la sala", rooms_path
 
-h1 Sala #{@room.name}
+h1#room data-room-id="#{@room.id}" Sala #{@room.name}
 
 div#messages
   = render @messages
 
-= form_with model: @room.messages.build, local: true, id: "message_form" do |f|
-  = f.text_area :content, placeholder: "Escribe aqui"
-  = f.submit "Enviar"
-
+= text_area_tag :content, "", placeholder: "Escribe aqui", id: 'chat-box'

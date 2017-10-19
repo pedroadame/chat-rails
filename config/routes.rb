@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     end
   end
   root to: 'users#new'
+  mount ActionCable.server => '/cable'
 end

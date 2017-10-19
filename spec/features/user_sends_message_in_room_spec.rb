@@ -10,17 +10,15 @@ RSpec.feature "UserSendsMessageInRoom", type: :feature do
     login_with_capybara!
   end
 
-  scenario 'User sends message in room and appears last' do
+  scenario 'User sends message in room and appears last', js: true do
     message = "Test message"
-    visit room_url(room)
+    room
+    p Room.last
+    visit room_path(room)
     expect(page).to have_css(".message", count: 20)
-    fill_in "message[content]", with: message
-    click_button "Enviar"
-
-    visit room_url(room)
-    expect(page).to have_css(".message", count: 20)
-
+    fill_in "chat-box", with: message
+    find("#chat-box").send_keys(:return)
+    expect(page).to have_css(".message", count: 21)
     expect(first(".message", text: message)).to eq(all(".message").last)
-
   end
 end

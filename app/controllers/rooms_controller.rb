@@ -8,6 +8,7 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
+    ActionCable.server.broadcast "rooms", message: 'illo'
   end
 
   def create
