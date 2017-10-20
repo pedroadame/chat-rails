@@ -6,10 +6,11 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+Capybara.server = :puma
+require 'rack_session_access/capybara'
 require 'support/factory_girl'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
-require 'rack_session_access/capybara'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -57,4 +58,28 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  # config.use_transactional_fixtures = false
+  # config.before(:suite) do
+    # DatabaseCleaner.clean_with :truncation
+  # end
+
+  # config.before(:each) do
+    # DatabaseCleaner.strategy = :transaction
+  # end
+
+  # config.before(:each, type: :feature) do
+    # driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+
+    # if !driver_shares_db_connection_with_specs
+      # DatabaseCleaner.strategy = :truncation
+    # end
+  # end
+
+  # config.before(:each) do
+    # DatabaseCleaner.start
+  # end
+
+  # config.append_after(:each) do
+    # DatabaseCleaner.clean
+  # end
 end
