@@ -17,6 +17,7 @@ RSpec.feature "UserCreatesRoom", type: :feature do
     fill_in "room[name]", with: text
     click_button "Crear sala"
 
+    expect(page).to_not have_text("Nueva sala")
     expect(page).to have_text(text)
     expect(page).to have_css("#messages")
   end
