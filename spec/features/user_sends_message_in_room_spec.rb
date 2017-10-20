@@ -12,8 +12,6 @@ RSpec.feature "UserSendsMessageInRoom", type: :feature do
 
   scenario 'User sends message in room and appears last', js: true do
     message = "Test message"
-    room
-    p Room.last
     visit room_path(room)
     expect(page).to have_css(".message", count: 20)
     fill_in "chat-box", with: message

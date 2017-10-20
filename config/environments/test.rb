@@ -40,4 +40,8 @@ Rails.application.configure do
 
   # Middleware
   config.middleware.use RackSessionAccess::Middleware
+
+  # Action Cable
+  config.action_cable.url = nil
+  config.action_cable.mount_path = ENV['ACTION_CABLE_MOUNT']
 end

@@ -77,6 +77,7 @@ services:
       - '.env'
     environment:
       RAILS_ENV: test
+      ACTION_CABLE_MOUNT: '/cable'
     command: /bin/true
 
 

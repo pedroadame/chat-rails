@@ -4,10 +4,10 @@ $ ->
     roomId = room.data("room-id")
     App.chat = App.cable.subscriptions.create { channel: "RoomsChannel", room_id: roomId },
       connected: () ->
-        console.log("connected")
+        console.log("ActionCable connected to server.")
 
       received: (data) ->
-        console.log data
+        console.log "Mew message received." 
         line = @formatLine(data)
         $("#messages").append line
 
