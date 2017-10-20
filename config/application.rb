@@ -53,6 +53,8 @@ module NssPrueba
     origins = ENV['ACTION_CABLE_ALLOWED_REQUEST_ORIGINS'].split(',')
     origins.map! { |url| /#{url}/ }
     config.action_cable.allowed_request_origins = origins
+
+    config.serve_static_assets = true
   end
 end
 

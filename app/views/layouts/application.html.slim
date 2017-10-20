@@ -8,6 +8,8 @@ html
     = action_cable_meta_tag
   
     = javascript_include_tag 'application'
+    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'hello_vue'
   body
     - unless flash.empty?
       - flash.each do |k, v|
