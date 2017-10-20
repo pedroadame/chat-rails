@@ -16,7 +16,6 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to @room
     else
-      # flash[:error] = "No se ha podido crear la sala de chat"
       render :new
     end
   end
@@ -32,5 +31,9 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:name)
+  end
+
+  def render_room(room)
+    render(partial: 'room', locals: { room: @room })
   end
 end
