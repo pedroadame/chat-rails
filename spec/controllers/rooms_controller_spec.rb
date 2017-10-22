@@ -19,7 +19,7 @@ RSpec.describe RoomsController, type: :controller do
     before do
       login!
     end
-    
+
     it "returns http success" do
       get :new
       expect(response).to have_http_status(:success)
@@ -51,7 +51,7 @@ RSpec.describe RoomsController, type: :controller do
     before do
       login!
     end
-    
+
     it "returns http success" do
       get :show, params: { id: room.id }
       expect(response).to have_http_status(:success)

@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
 
   def index
-    @rooms = Room.all
+    @rooms = Room.for_display
   end
 
   def new
