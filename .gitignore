@@ -20,3 +20,4 @@
 /vendor/bundle
 /public/assets/*
 *.swp
+node_modules/
