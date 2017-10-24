@@ -7,4 +7,5 @@ nav.navbar.is-primary
       span
       span
   .navbar-menu
-    .navbar-item = link_to "Salir", logout_user_path(@current_user), method: :post, data: { confirm: "Estas seguro de que deseas salir?" }
+    .navbar-end
+      .navbar-item = link_to "Salir", logout_user_path(@current_user), method: :post, data: { confirm: "Estas seguro de que deseas salir?" }
