@@ -14,11 +14,11 @@ RSpec.feature "UserCanLogOut", type: :feature do
     accept_confirm do
       click_link "Salir"
     end
-    expect(page).to have_text("Introduce tu nombre")
+    expect(page).to have_current_path(root_path)
     expect(page).to have_text("Sesion cerrada correctamente")
 
     visit rooms_path
-    expect(page).to have_text("Introduce tu nombre")
+    expect(page).to have_current_path(root_path)
     expect(page).to have_text("Debes registrarte antes")
   end
 end

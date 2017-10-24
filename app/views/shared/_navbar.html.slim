@@ -1,0 +1,10 @@
+nav.navbar.is-primary
+  .navbar-brand
+    .navbar-item.chat-logo
+    .navbar-item Conectado como #{@current_user.name}
+    button.button.navbar-burger.is-primary
+      span
+      span
+      span
+  .navbar-menu
+    .navbar-item = link_to "Salir", logout_user_path(@current_user), method: :post, data: { confirm: "Estas seguro de que deseas salir?" }
