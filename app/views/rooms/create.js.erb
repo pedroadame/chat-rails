@@ -1,0 +1,10 @@
+<% if @room.persisted? %>
+  window.location.pathname = '/rooms/<%= @room.id %>';
+<% else %>
+  var errors = '<%= @room.errors.full_messages&.first&.gsub '"', '' %>';
+  var roomErrors = $('.room-errors');
+  $(roomErrors).html(errors);
+  $(roomErrors).addClass('notification');
+  $(roomErrors).addClass('is-danger');
+<% end %>
+
