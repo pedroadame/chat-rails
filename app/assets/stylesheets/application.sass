@@ -14,7 +14,18 @@
  *
  *It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+@import 'bulma/css/bulma.css'
+@import '_login'
 
+.chat-logo
+  width: 100px
+  height: 100px
+  background: image-url('chat-logo.png')
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: contain
+
+  &--big
+    width: 200px
+    height: 200px
