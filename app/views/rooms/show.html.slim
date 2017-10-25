@@ -1,9 +1,15 @@
-div#back
-  = link_to "Salir de la sala", rooms_path
+section.section.chatroom-section
+  .container.chatroom-container
+    .level
+      .level-left
+        p.title#room data-room-id="#{@room.id}" = @room.name
+      .level-right
+        #back
+          = link_to "Salir de la sala", rooms_path, class: ['button', 'is-light']
 
-h1#room data-room-id="#{@room.id}" Sala #{@room.name}
+    .chatroom
+      div.messages
+        = render @messages
 
-div#messages
-  = render @messages
-
-= text_area_tag :content, "", placeholder: "Escribe aqui", id: 'chat-box'
+      .new-message-box.control
+        = text_area_tag :content, "", placeholder: "Escribe aqui", id: 'chat-box', class: 'textarea'

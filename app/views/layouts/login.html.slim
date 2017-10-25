@@ -11,7 +11,6 @@ html
     = javascript_include_tag 'application'
 
   body
-    = render 'shared/navbar'
     - unless flash.empty?
       - flash.each do |k, v|
         div Error: #{v}

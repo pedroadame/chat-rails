@@ -7,6 +7,7 @@ class Room < ApplicationRecord
 
   after_commit :broadcast_new_room
 
+  scope :for_display, -> { order(created_at: :desc) }
   private
   def broadcast_new_room
     ActionCable.server.broadcast "room_list",

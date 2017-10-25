@@ -7,4 +7,4 @@ $ ->
 
       received: (data) ->
         console.log "New room created" 
-        $(room_list).append data['room']
+        $(data['room']).insertBefore $('.room').first()

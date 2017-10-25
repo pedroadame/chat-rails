@@ -15,17 +15,6 @@ RSpec.describe RoomsController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    before do
-      login!
-    end
-    
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe "POST #create" do
     before do
       login!
@@ -33,7 +22,7 @@ RSpec.describe RoomsController, type: :controller do
 
     subject do
       post :create, params: {
-        room: { name: "Test room" }
+        room: { name: "Test room" }, format: :js
       }
     end
 
@@ -41,8 +30,8 @@ RSpec.describe RoomsController, type: :controller do
       expect{ subject }.to change { Room.count}.by 1
     end
 
-    it "redirects to the room" do
-      expect(subject).to have_http_status(:found)
+    it "returns http success" do
+      expect(subject).to have_http_status(:success)
     end
   end
 
@@ -51,7 +40,7 @@ RSpec.describe RoomsController, type: :controller do
     before do
       login!
     end
-    
+
     it "returns http success" do
       get :show, params: { id: room.id }
       expect(response).to have_http_status(:success)

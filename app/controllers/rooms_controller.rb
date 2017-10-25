@@ -3,21 +3,12 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
 
   def index
-    @rooms = Room.all
-  end
-
-  def new
-    @room = Room.new
-    ActionCable.server.broadcast "rooms", message: 'illo'
+    @rooms = Room.for_display
   end
 
   def create
     @room = Room.new(room_params)
-    if @room.save
-      redirect_to @room
-    else
-      render :new
-    end
+    @room.save
   end
 
   def show

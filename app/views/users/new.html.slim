@@ -1,8 +1,10 @@
-h1 Chat!
-div.new-user-form
-  = form_with model: @user, local: true do |f|
-    .inputs
-      = f.label :name, "Introduce tu nombre"
-      = f.text_field :name
-    .submit
-      = f.submit "Entrar"
+.login-container
+  .chat-logo.chat-logo--big
+  div.new-user-form
+    = form_with model: @user, local: true do |f|
+      .field.has-addons
+        .control
+          = f.text_field :name, class: ['input'], placeholder: 'Nombre de usuario'
+        .control
+          = f.submit "Entrar", class: ['button', 'is-info']
+

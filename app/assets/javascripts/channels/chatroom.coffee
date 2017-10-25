@@ -5,15 +5,17 @@ $ ->
     App.chat = App.cable.subscriptions.create { channel: "RoomsChannel", room_id: roomId },
       connected: () ->
         console.log("ActionCable connected to server.")
+        $(".messages").scrollTop $('.messages')[0].scrollHeight
 
       received: (data) ->
         console.log "Mew message received." 
         line = @formatLine(data)
-        $("#messages").append line
+        $(".messages").append line
+        $(".messages").scrollTop $('.messages')[0].scrollHeight
 
       formatLine: (data) ->
         """
-        <div class="message" id="message-#{data["message_id"]}">
+        <div class="chat-message" id="message-#{data["message_id"]}">
           <p>#{data["username"]} > #{data["message"]}</p>
         </div>
         """

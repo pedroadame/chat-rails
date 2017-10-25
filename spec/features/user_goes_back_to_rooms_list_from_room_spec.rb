@@ -13,7 +13,6 @@ RSpec.feature "UserGoesBackToRoomsListFromRoom", type: :feature do
   scenario "User clicks go back button and goes to room list" do
     visit room_url(room)
     click_link "Salir de la sala"
-    expect(page).to have_text("Elige una sala")
     expect(page).to have_css(".rooms")
   end
 end

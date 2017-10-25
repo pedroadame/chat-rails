@@ -8,13 +8,13 @@ RSpec.feature "RoomAppearsInListWhenCreated", type: :feature, js: true do
     login_with_capybara!
   end
 
-  scenario 'room appears by websocker connection' do
+  scenario 'room appears by websocket connection at start of list' do
     5.times { create :room }
     visit rooms_path
     expect(page).to have_selector(".room", count: 5)
     room = create :room
     expect(page).to have_selector(".room", count: 6)
-    expect(page).to have_selector(".room", text: room.name)
+    expect(first(".room")).to have_text(room.name)
   end
   
 end

@@ -10,6 +10,9 @@ Capybara.server = :puma
 require 'rack_session_access/capybara'
 require 'support/factory_girl'
 require 'capybara/poltergeist'
+Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, window_size: [1600, 768])
+end
 Capybara.javascript_driver = :poltergeist
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

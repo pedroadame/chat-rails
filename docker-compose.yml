@@ -24,6 +24,7 @@ services:
       - 'postgres'
       - 'redis'
       - 'box'
+      - 'webpacker'
     build: .
     ports:
       - '3000:3000'
@@ -85,6 +86,16 @@ services:
     image: busybox
     volumes:
       - '/box'
+
+  webpacker:
+    build: .
+    command: bundle exec webpack-dev-server --host 0.0.0.0
+    volumes:
+      - '.:/app'
+    volumes_from:
+      - box
+    ports:
+      - "3035:3035"
 
 volumes:
   redis:
