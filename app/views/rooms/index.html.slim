@@ -1,9 +1,12 @@
-h1 Bienvenido, #{@current_user.name}
-p = link_to "Salir", logout_user_path(@current_user), method: :post, data: { confirm: "Estas seguro de que deseas salir?" }
+section.section
+  .container
+    .level
+      .level-left
+      .level-right
+        a.level-item.button.is-link.launchs-modal data-launchs-modal="new-room-modal" onclick='event.preventDefault()' href="#" Nueva sala
 
+  .container
+    .rooms
+      = render @rooms
 
-h2 Elige una sala
-
-h3 = link_to "Nueva sala", new_room_path
-div.rooms
-  = render @rooms
+= render 'new_room_modal'

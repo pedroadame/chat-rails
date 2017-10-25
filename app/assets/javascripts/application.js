@@ -16,6 +16,7 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require cable
 //= require jquery
+//= require cable
 //= require_tree .
+

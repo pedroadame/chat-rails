@@ -15,8 +15,8 @@ RSpec.feature "UserEntersInRoomSpec", type: :feature do
     click_link room.name
     expect(page).to have_css("#room[data-room-id='#{room.id}']")
     expect(page).to have_text(room.name)
-    expect(page).to have_css("#messages")
-    expect(page).to have_css("#chat-box")
-    expect(page).to have_css(".message", count: 20)
+    expect(page).to have_css(".messages")
+    expect(page).to have_css(".new-message-box")
+    expect(page).to have_css(".chat-message", count: 20)
   end
 end

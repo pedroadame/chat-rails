@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :logout]
   before_action :ensure_not_logged_in!, only: [:new, :create]
 
+  layout 'login'
+
   def new
     @user = User.new
   end
