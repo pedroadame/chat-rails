@@ -1,12 +1,12 @@
 require 'rails_helper'
 require 'support/login_helper'
 
-RSpec.feature "UserCreatesRoom", type: :feature do
+RSpec.feature "UserCreatesRoom", type: :feature, js: true do
   include LoginHelper
 
   before do
     login_with_capybara!
-    visit rooms_url
+    visit rooms_path
     click_link "Nueva sala"
   end
 
@@ -23,13 +23,11 @@ RSpec.feature "UserCreatesRoom", type: :feature do
 
   scenario 'User inserts empty name and no room is created' do
     click_button "Crear sala"
-    expect(page).to have_css(".new-room-form")
-    expect(page).to have_css(".validation-error")
+    expect(page).to have_css(".room-errors.notification.is-danger")
   end
 
   scenario 'User inserts already taken name' do
     click_button "Crear sala"
-    expect(page).to have_css(".new-room-form")
-    expect(page).to have_css(".validation-error")
+    expect(page).to have_css(".room-errors.notification.is-danger")
   end
 end

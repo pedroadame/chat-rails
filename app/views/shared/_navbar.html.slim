@@ -8,4 +8,4 @@ nav.navbar.is-primary
       span
   .navbar-menu
     .navbar-end
-      .navbar-item = link_to "Salir", logout_user_path(@current_user), method: :post, data: { confirm: "Estas seguro de que deseas salir?" }
+      .navbar-item = link_to "Salir", logout_user_path(@current_user), method: :post, data: { confirm: "Estas seguro de que deseas salir?" }, class: ['button', 'is-light', 'logout-link']

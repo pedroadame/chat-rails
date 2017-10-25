@@ -1,13 +1,12 @@
 section.section
-  .level
-    .level-left
-      h3.subtitle.level-item Elige una sala
-    .level-right
-      a.level-item.launchs-modal data-launchs-modal="new-room-modal" onclick='event.preventDefault()' href="#" Nueva sala
+  .container
+    .level
+      .level-left
+      .level-right
+        a.level-item.button.is-link.launchs-modal data-launchs-modal="new-room-modal" onclick='event.preventDefault()' href="#" Nueva sala
 
-section.section
-  div.rooms.tile.is-ancestor
-    .tile.is-parent.is-vertical
+  .container
+    .rooms
       = render @rooms
 
 = render 'new_room_modal'

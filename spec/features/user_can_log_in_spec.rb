@@ -8,7 +8,7 @@ RSpec.describe 'UserCanLogIn', type: :feature do
     click_button "Entrar"
 
     expect(page).to have_text "Conectado como Pedro"
-    expect(page).to have_text "Elige una sala"
+    expect(page).to have_selector(".rooms")
   end
 
   scenario 'User can\'t log in without introducing username' do
