@@ -31,6 +31,9 @@ ENV BUNDLE_PATH "/box"
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
+COPY package.json yarn.lock ./
+RUN yarn install
+
 COPY . .
 
 LABEL maintainer="Pedro Adame <pedro.a.1smr@gmail.com>"
