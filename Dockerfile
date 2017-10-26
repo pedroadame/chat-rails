@@ -28,14 +28,18 @@ WORKDIR /app
 
 ENV BUNDLE_PATH "/box"
 
-COPY Gemfile Gemfile.lock ./
-RUN bundle install
+# We cannot install gems and node packages here because our directory is a shared volume.
+# Changes will be lost. Instead, run these commands with docker-compose run service [command] after build
 
-COPY package.json yarn.lock ./
-RUN yarn install
+# COPY Gemfile Gemfile.lock ./
+# RUN bundle install
+
+# COPY package.json yarn.lock ./
+# RUN yarn install --force
+
 
 COPY . .
 
 LABEL maintainer="Pedro Adame <pedro.a.1smr@gmail.com>"
 
-CMD puma -C config/puma.rb
+CMD bundle exec puma -C config/puma.rb

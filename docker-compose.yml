@@ -41,7 +41,7 @@ services:
       - 'redis'
       - 'box'
     build: .
-    command: sidekiq -C config/sidekiq.yml.erb
+    command: bundle exec sidekiq -C config/sidekiq.yml.erb
     volumes:
       - '.:/app'
     volumes_from:
@@ -54,7 +54,7 @@ services:
       - 'redis'
       - 'box'
     build: .
-    command: puma -p 28080 cable/config.ru
+    command: bundle exec puma -p 28080 cable/config.ru
     ports:
       - '28080:28080'
     volumes:
