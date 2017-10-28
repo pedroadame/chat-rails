@@ -40,6 +40,7 @@ ENV BUNDLE_PATH "/box"
 
 COPY . .
 
+
 LABEL maintainer="Pedro Adame <pedro.a.1smr@gmail.com>"
 
 CMD bundle exec puma -C config/puma.rb

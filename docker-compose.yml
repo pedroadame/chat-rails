@@ -96,6 +96,8 @@ services:
       - box
     ports:
       - "3035:3035"
+    env_file:
+      - '.env'
 
 volumes:
   redis:
