@@ -1,13 +1,27 @@
 <template lang='pug'>
-  a.level-item.button.is-link(@click.prevent="launchModal") Nueva sala
+  div
+    a.level-item.button.is-link(@click.prevent="launchModal") Nueva sala
+    new-room-modal(v-if='shown', @dismiss='dismissModal')
 </template>
 
 <script>
+import NewRoomModal from './NewRoomModal.vue'
 export default {
+  data: function () {
+    return {
+      shown: false
+    }
+  },
   methods: {
     launchModal: function () {
-      console.log("illorl")
+      this.shown = true
+    },
+    dismissModal: function () {
+      this.shown = false
     }
+  },
+  components: {
+    NewRoomModal
   }
 }
 </script>

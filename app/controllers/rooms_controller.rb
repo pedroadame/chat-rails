@@ -8,7 +8,11 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-    @room.save
+    if @room.save
+      render json: @room
+    else
+      head :bad_request
+    end
   end
 
   def show
