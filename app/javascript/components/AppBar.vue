@@ -10,11 +10,12 @@
     .navbar-menu(v-bind:class="{ 'is-active': menuOpened }")
       .navbar-end
         .navbar-item
-          button.button.is-light.logout-button Salir
+          logout-button
 
 </template>
 
 <script>
+import LogoutButton from './LogoutButton.vue'
 export default {
   data: function () {
     return {
@@ -29,7 +30,8 @@ export default {
     showNavbarMenu: function () {
       this.menuOpened = !this.menuOpened
     }
-  }
+  },
+  components: { LogoutButton }
 }
 
 </script>

@@ -6,6 +6,10 @@ export default {
   mutations: {
     username (state, newUsername) {
       state.username = newUsername
+    },
+    logout (state) {
+      state.isAuthenticated = false
+      state.username = ''
     }
   }
 }
