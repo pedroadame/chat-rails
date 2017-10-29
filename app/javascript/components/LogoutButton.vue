@@ -1,5 +1,5 @@
 <template lang='pug'>
-  button.button.is-light(@click='logout') Salir
+  button.button.is-light.logout-link(@click='logout') Salir
 </template>
 
 <script>

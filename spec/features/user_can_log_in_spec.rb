@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'UserCanLogIn', type: :feature do
+RSpec.describe 'UserCanLogIn', type: :feature, js: true do
   scenario 'User logs in introducing his name' do
-    visit root_url
-    fill_in "user[name]", with: "Pedro"
+    visit root_path
+    fill_in "username", with: "Pedro"
 
     click_button "Entrar"
 
@@ -12,9 +12,8 @@ RSpec.describe 'UserCanLogIn', type: :feature do
   end
 
   scenario 'User can\'t log in without introducing username' do
-    visit root_url
+    visit root_path
     click_button "Entrar"
-    expect(page).to have_css(".new-user-form")
-    expect(page).to have_css(".validation-error")
+    expect(page).to have_text("El nombre es demasiado corto")
   end
 end
