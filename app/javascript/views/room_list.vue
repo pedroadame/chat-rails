@@ -23,7 +23,8 @@ export default {
   data: function () {
     return {
       rooms: [],
-      message: 'Cargando...'
+      message: 'Cargando...',
+      cable: {}
     }
   },
   components: {
@@ -43,8 +44,19 @@ export default {
         })
     },
     connectActionCable: function () {
+      this.cable = App.cable.subscriptions.create({
+        channel: "RoomListChannel"
+      },{
+        connected: () => {
+          console.log("Cable connected")
+        },
+        received: (data) => {
+          this.addRoom(data.room)
+        }
+      })
     },
-    addRoom: function () {
+    addRoom: function (room) {
+      this.rooms.unshift(room)
     }
   },
   created: function () {

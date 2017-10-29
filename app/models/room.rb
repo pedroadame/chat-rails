@@ -8,14 +8,10 @@ class Room < ApplicationRecord
   after_commit :broadcast_new_room
 
   scope :for_display, -> { order(created_at: :desc) }
+
   private
   def broadcast_new_room
     ActionCable.server.broadcast "room_list",
-      room: render_room
-  end
-
-  def render_room
-    RoomsController.render partial: 'room',
-      locals: { room: self }
+      room: self
   end
 end
