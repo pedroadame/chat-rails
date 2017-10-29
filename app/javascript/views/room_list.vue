@@ -8,7 +8,7 @@
 
     .container
       .rooms
-        room(v-for="room in rooms" v-bind="room")
+        room(v-for="room in rooms" :key='room.id' v-bind="room")
 
 </template>
 
