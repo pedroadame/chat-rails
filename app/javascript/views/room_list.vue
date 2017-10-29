@@ -8,13 +8,27 @@
 
     .container
       .rooms
+        room(v-for="room in rooms" v-bind="room")
+
 </template>
 
 <script>
 import NewRoomButton from '../components/NewRoomButton.vue'
+import Room from '../components/Room.vue'
+
 export default {
+  data: function () {
+    return {
+      rooms: [
+        { name: "illo", id: 1 },
+        { name: "illo2", id: 2 },
+        { name: "illo2", id: 3 },
+      ]
+    }
+  },
   components: {
-    NewRoomButton
+    NewRoomButton,
+    Room
   }
 }
 </script>
