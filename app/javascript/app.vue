@@ -1,21 +1,12 @@
 <template lang='pug'>
   #app
-    p {{ message }}
+    router-view
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
-    }
-  }
 }
 </script>
 
-<style lang='sass' >
-p
-  font-size: 2em
-  text-align: center
-  color: red
+<style lang='sass' scoped>
 </style>

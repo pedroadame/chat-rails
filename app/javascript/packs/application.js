@@ -1,10 +1,44 @@
-/* eslint no-console:0 */
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-//
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
-// layout file, like app/views/layouts/application.html.erb
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 
-console.log('Hello World from Webpacker')
+import storeConfig from '../config/store.js'
+
+Vue.use(Vuex)
+Vue.use(VueRouter)
+
+import Login from '../views/login_view.vue'
+import Redirector from '../redirector.vue'
+import Rooms from '../views/rooms.vue'
+import ChatRoom from '../views/chat_room.vue'
+import RoomList from '../views/room_list.vue'
+import App from '../app.vue'
+
+const routes = [
+  { path: '/', component: Redirector },
+  { path: '/login', component: Login },
+  { path: '/rooms', component: Rooms,
+    children: [
+      { path: '', component: RoomList },
+      {
+        path: ':id',
+        component: ChatRoom
+      }
+    ]
+  }
+]
+
+const router = new VueRouter({
+  routes
+})
+
+const store = new Vuex.Store(storeConfig)
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.appendChild(document.createElement('vue-app'))
+  const app = new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('vue-app')
+})
