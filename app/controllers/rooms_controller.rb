@@ -28,8 +28,4 @@ class RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:name)
   end
-
-  def render_room(room)
-    render(partial: 'room', locals: { room: @room })
-  end
 end
