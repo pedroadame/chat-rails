@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
 
   def show
     @messages = @room.messages.for_display
+    render json: { room: @room, messages: @messages }
   end
 
   private

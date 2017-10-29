@@ -36,6 +36,7 @@ const routes = [
       {
         path: ':id',
         component: ChatRoom,
+        props: true,
         meta: {
           protected: true,
           redirectTo: '/login'
