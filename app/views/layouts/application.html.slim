@@ -14,7 +14,7 @@ html
     = stylesheet_pack_tag 'application'
 
   body
-    = render 'shared/navbar'
+    / = render 'shared/navbar'
     - unless flash.empty?
       - flash.each do |k, v|
         div Error: #{v}

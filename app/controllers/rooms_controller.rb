@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.for_display
+    render json: @rooms
   end
 
   def create

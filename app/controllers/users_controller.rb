@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :logout]
 
-  layout 'login'
+  # layout 'login'
 
   def new
     @user = User.new
