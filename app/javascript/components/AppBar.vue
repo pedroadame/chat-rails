@@ -3,21 +3,31 @@
     .navbar-brand
       .navbar-item.chat-logo
       .navbar-item Conectado como {{ username }}
-      button.button.navbar-burger.is-primary
+      button.button.navbar-burger.is-primary(@click="showNavbarMenu" v-bind:class="{ 'is-active': menuOpened }")
         span
         span
         span
-    .navbar-menu
+    .navbar-menu(v-bind:class="{ 'is-active': menuOpened }")
       .navbar-end
-        button.button Salir
+        .navbar-item
+          button.button.is-light.logout-button Salir
 
 </template>
 
 <script>
 export default {
-  computed: {
-    username: function () {
-      return this.$store.state.username
+  data: function () {
+    return {
+      menuOpened: false,
+      username: ''
+    }
+  },
+  created: function () {
+    this.username =  this.$store.state.username
+  },
+  methods: {
+    showNavbarMenu: function () {
+      this.menuOpened = !this.menuOpened
     }
   }
 }
