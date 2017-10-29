@@ -47,6 +47,7 @@ export default {
       }).then(function (response) {
           that.roomName = response.data.room.name
           that.messages = response.data.messages
+          that.message = ''
         })
         .catch(function (response) {
           that.$router.push('/rooms')
