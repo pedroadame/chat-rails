@@ -46,6 +46,8 @@ gem 'coffee-rails'
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.3'
 
+gem 'normalize_rails'
+
 # Use Turbolinks. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
 
