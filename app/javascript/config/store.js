@@ -1,11 +1,12 @@
 export default {
   state: {
-    isAuthenticated: true,
-    username: 'Pedro'
+    isAuthenticated: false,
+    username: ''
   },
   mutations: {
-    username (state, newUsername) {
+    login (state, newUsername) {
       state.username = newUsername
+      state.isAuthenticated = true
     },
     logout (state) {
       state.isAuthenticated = false

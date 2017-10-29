@@ -1,11 +1,12 @@
 <template lang='pug'>
-  #login
-    h1 Chat!
-    div.inputs
-      form(v-on:submit.prevent='login')
-        label Tu nombre:
-        input(v-model='name')
-        button(type="submit") Login
+  .login-container
+    .chat-logo.chat-logo--big
+    .new-user-form
+      .field.has-addons
+        .control
+          input.input(v-model='name', placeholder='Nombre de usuario', @keyup.enter='login')
+        .control
+          button.button(@click='login') Entrar
 </template>
 
 <script>
@@ -17,7 +18,8 @@ export default {
   },
   methods: {
     login: function () {
-      this.$store.commit('username', this.name)
+      this.$store.commit('login', this.name)
+      this.$router.push('/rooms')
     }
   }
 
