@@ -11,16 +11,14 @@
         .messages
           p(v-if="messages.length == 0") {{ message }}
           message(v-for="message in messages" :key='message.id' v-bind='message')
-
-        .new-message-box.control
-          textarea.textarea(name='content', id='chat-box', placeholder='Escribe aqui')
+        chat-box(@send='sendMessage')
 </template>
 
 <script>
 import axios from 'axios'
 
 import Message from '../components/Message.vue'
-// import ChatBox from '../components/ChatBox.vue'
+import ChatBox from '../components/ChatBox.vue'
 
 export default {
   data: function () {
@@ -60,24 +58,31 @@ export default {
     connectActionCable: function () {
       var that = this
       this.cable = App.cable.subscriptions.create({
-        channel: "RoomsChannel", room_id: that.id
+        channel: "RoomsChannel", room_id: that.id, username: that.$store.state.username
       },{
         connected: () => {
           console.log("Cable connected")
         },
         received: (data) => {
-          this.addMessage(data.message)
+          this.addMessage(data)
           this.scrollBottom()
         }
       })
     },
-    addMessage: function (message) {
-      this.messages.push(message)
+    addMessage: function (data) {
+      this.messages.push({ content: data.message,
+      user: data.user,
+        id: data.message_id})
     },
     scrollBottom: function () {
       this.$nextTick(() => {
         const list = this.$el.querySelector('.messages')
         list.scrollTop = list.scrollHeight
+      })
+    },
+    sendMessage: function (message) {
+      this.cable.send({
+        message: message
       })
     }
   }, watch: {
@@ -91,7 +96,8 @@ export default {
     }
   },
   components: {
-    Message
+    Message,
+    ChatBox
   }
 }
 </script>

@@ -4,8 +4,8 @@ class RoomsChannel < ActionCable::Channel::Base
   end
 
   def receive(data)
-    msg = Message.create content: data["message"], user: current_user, room_id: params[:room_id]
-    if msg.valid?
+    msg = Message.new content: data["message"], user: params[:username], room_id: params[:room_id]
+    if msg.save
       ActionCable.server.broadcast specific_channel, format_response(msg)
     end
   end
@@ -18,7 +18,7 @@ class RoomsChannel < ActionCable::Channel::Base
   def format_response(data)
     {
       message: data.content,
-      username: current_user.name,
+      user: data.user,
       message_id: data.id
     }
   end
