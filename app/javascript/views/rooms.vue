@@ -1,10 +1,7 @@
-<template>
-  <div>
-    <app-bar />
-
-    <router-view/>
-  </div>
-
+<template lang='pug'>
+  .app-container
+    app-bar
+    router-view
 </template>
 
 <script>
@@ -17,3 +14,9 @@ export default {
 }
 
 </script>
+
+<style lang='sass'>
+.app-container
+  width: 100%
+  height: 100%
+</style>
