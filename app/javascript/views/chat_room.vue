@@ -11,6 +11,9 @@
         .messages
           p(v-if="messages.length == 0") {{ message }}
           message(v-for="message in messages" :key='message.id' v-bind='message')
+
+        .new-message-box.control
+          textarea.textarea(name='content', id='chat-box', placeholder='Escribe aqui')
 </template>
 
 <script>
@@ -36,6 +39,7 @@ export default {
   },
   created: function () {
     this.loadMessages()
+    this.connectActionCable()
   },
   methods: {
     loadMessages: function () {
@@ -52,11 +56,36 @@ export default {
         .catch(function (response) {
           that.$router.push('/rooms')
         })
+    },
+    connectActionCable: function () {
+      var that = this
+      this.cable = App.cable.subscriptions.create({
+        channel: "RoomsChannel", room_id: that.id
+      },{
+        connected: () => {
+          console.log("Cable connected")
+        },
+        received: (data) => {
+          this.addMessage(data.message)
+          this.scrollBottom()
+        }
+      })
+    },
+    addMessage: function (message) {
+      this.messages.push(message)
+    },
+    scrollBottom: function () {
+      this.$nextTick(() => {
+        const list = this.$el.querySelector('.messages')
+        list.scrollTop = list.scrollHeight
+      })
     }
   }, watch: {
     '$route' (to, from) {
       if(from.params.id){
         this.loadMessages()
+        this.cable.unsubscribe()
+        this.connectActionCable()
       }
 
     }
